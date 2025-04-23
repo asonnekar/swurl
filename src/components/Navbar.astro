@@ -1,15 +1,24 @@
-<nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md shadow-sm">
+<nav class="fixed top-0 left-0 right-0">
+  <style>
+    .nav-link {
+      transition: all 0.3s ease;
+      color: var(--color-sage);
+    }
+    .nav-link:hover {
+      text-shadow: 0 0 10px rgba(201, 228, 202, 0.8),
+                   0 0 20px rgba(201, 228, 202, 0.5),
+                   0 0 30px rgba(201, 228, 202, 0.3);
+    }
+  </style>
   <div class="w-full">
     <div class="flex items-center justify-between h-16">
       <div class="flex-shrink-0 pl-4">
-        <a href="/" class="text-xl font-bold bg-gradient-to-r from-[#1e1b4b] to-[#4c1d95] bg-clip-text text-transparent">Swurl</a>
+        <a href="/" class="text-xl font-bold bg-gradient-to-r from-[var(--color-sage)] to-[var(--color-muted-green)] bg-clip-text text-transparent">Swurl</a>
       </div>
       <div class="hidden md:block pr-4">
         <div class="flex items-baseline space-x-4">
-          <a href="/" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-          <a href="/about" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">About</a>
-          <a href="/services" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Services</a>
-          <a href="/contact" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+          <a href="/" class="nav-link px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+          <a href="/Login/Signup" class="nav-link px-3 py-2 rounded-md text-sm font-medium">Login/Sign-up</a>
         </div>
       </div>
     </div>
