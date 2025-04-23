@@ -1,0 +1,33 @@
+---
+import Navbar from '../components/Navbar.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Swurl - Home</title>
+		<link rel="stylesheet" href="/src/styles/global.css" />
+		<style>
+			.gradient-bg {
+				background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%);
+				position: relative;
+				overflow: hidden;
+			}
+			
+		</style>
+	</head>
+	<body class="min-h-screen font-sans">
+		<div class="gradient-bg min-h-screen">
+			
+			<Navbar />
+			<main class="pt-20">
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<h1 class="text-5xl text-white text-center p-8 bg-white/10 rounded-2xl shadow-lg backdrop-blur-sm">
+						Welcome to Swurl
+					</h1>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>
