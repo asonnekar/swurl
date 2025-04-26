@@ -1,1 +1,39 @@
 @import "tailwindcss";
+
+:root {
+    --color-sage: #C9E4CA;
+    --color-muted-green: #87BBA2;
+    --color-blue-gray: #55828B;
+    --color-deep-teal: #3B6064;
+    --color-dark-blue: #364958;
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, var(--color-dark-blue) 0%, var(--color-deep-teal) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-muted-green) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(201, 228, 202, 0.2);
+}
+.gradient-text2 {
+    background: linear-gradient(25deg, var(--color-sage) 0%, var(--color-dark-blue) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(201, 228, 202, 0.2);
+}
+
+.content-card {
+    background-color: var(--color-dark-blue);
+    border: 2px solid var(--color-sage);
+			}
+
+
+		
+  

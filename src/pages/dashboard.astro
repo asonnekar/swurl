@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { supabase } from "../lib/supabase";
+
+// Check for existing session
+const { data: { session }, error } = await supabase.auth.getSession();
+
+if (!session) {
+  return Astro.redirect("/signin");
+}
+
+const email = session.user.email;
+---
+<Layout title="dashboard">
+  <div class="max-w-md mx-auto mt-24 p-8 bg-white bg-opacity-10 rounded-xl shadow-lg">
+
+  <h1>Welcome {email}</h1>
+  <p>We are happy to see you here</p>
+  <form action="/api/auth/signout" method="post">
+    <button type="submit">Sign out</button>
+  </form>
+</div>
+
+</Layout>

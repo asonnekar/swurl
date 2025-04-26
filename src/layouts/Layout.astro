@@ -1,0 +1,19 @@
+---
+import Navbar from '../components/Navbar.astro';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Swurl - Home</title>
+		<link rel="stylesheet" href="/src/styles/global.css" />
+		
+	</head>
+	<body class="min-h-screen font-sans">
+		<div class="gradient-bg min-h-screen">
+			<Navbar />
+			<slot />
+		</div>
+	</body>
+</html>
