@@ -2,7 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 import { supabase } from "../lib/supabase";
 
-// Check for existing session
 const { data: { session }, error } = await supabase.auth.getSession();
 
 if (!session) {
