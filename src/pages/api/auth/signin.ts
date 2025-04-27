@@ -8,7 +8,10 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
   const password = formData.get("password")?.toString();
 
   if (!email || !password) {
-    return new Response("Email and password are required", { status: 400 });
+    return new Response(JSON.stringify({ error: "Email and password are required" }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -17,8 +20,10 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
   });
 
   if (error) {
-    return new Response(error.message, { status: 500 });
-  }
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 401,
+      headers: { "Content-Type": "application/json" },
+    });  }
 
   const { access_token, refresh_token } = data.session;
   cookies.set("sb-access-token", access_token, {
@@ -33,5 +38,8 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
     httpOnly: true,
     sameSite: "lax",
   });
-  return redirect("/dashboard");
+  return new Response(JSON.stringify({ success: true }), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
 };

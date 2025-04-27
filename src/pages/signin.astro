@@ -19,12 +19,33 @@ export const prerender = false;
     <p class="mb-6 text-center">
       New here? <a href="/register" class="text-white underline">Create an account</a>
     </p>
-    <form action="/api/auth/signin" method="post" class="flex flex-col gap-4">
+    <form id="signin-form" class="flex flex-col gap-4">
       <label for="email" class="font-semibold">Email</label>
-      <input type="email"name="email"id="email"class="p-2 rounded border border-gray-400 caret-white"required/>
+      <input type="email" name="email" id="email" class="p-2 rounded border border-gray-400 caret-white" required />
       <label for="password" class="font-semibold">Password</label>
-      <input type="password"name="password"id="password"class="p-2 rounded border border-gray-400 caret-(--color-muted-green)"required/>
-      <button type="submit"class="cursor-pointer mt-4 p-2 bg-[linear-gradient(135deg,_var(--color-sage)_0%,_var(--color-muted-green)_100%)] bg-[length:200%_200%] text-white rounded transition-all duration-500 hover:bg-[linear-gradient(135deg,_var(--color-sage)_0%,_var(--color-muted-green)_100%)] hover:bg-[position:100%_0]">Login</button>
+      <input type="password" name="password" id="password" class="p-2 rounded border border-gray-400 caret-(--color-muted-green)" required />
+      <button type="submit" class="cursor-pointer mt-4 p-2 bg-[linear-gradient(135deg,_var(--color-sage)_0%,_var(--color-muted-green)_100%)] bg-[length:200%_200%] text-white rounded transition-all duration-500 hover:bg-[linear-gradient(135deg,_var(--color-sage)_0%,_var(--color-muted-green)_100%)] hover:bg-[position:100%_0]">Login</button>
+      <p id="error-message" class="text-red-500 font-semibold"></p>
     </form>
   </div>
+
+  <script type="module">
+    const form = document.getElementById('signin-form');
+    const errorMessage = document.getElementById('error-message');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      errorMessage.textContent = "";
+      const formData = new FormData(form);
+      const response = await fetch('/api/auth/signin', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        errorMessage.textContent = data.error || "An error occurred. Please try again.";
+      } else {
+        window.location.href = "/dashboard";
+      }
+    });
+  </script>
 </Layout>
