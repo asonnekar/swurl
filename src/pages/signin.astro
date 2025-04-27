@@ -4,7 +4,6 @@ import { supabase } from "../lib/supabase";
 
 const { cookies, redirect } = Astro;
 
-// Check for existing session
 const { data: { session }, error } = await supabase.auth.getSession();
 
 if (session) {
@@ -12,23 +11,20 @@ if (session) {
 }
 
 export const prerender = false;
-
 ---
 
 <Layout title="Sign in">
-  <div class="max-w-md mx-auto mt-24 p-8 bg-white bg-opacity-10 rounded-xl shadow-lg">
-    <h1 class="text-3xl font-bold mb-4 text-center">Sign in</h1>
+  <div class="max-w-md mx-auto mt-24 p-8 bg-white bg-opacity-10 rounded-2xl shadow-lg text-center content-card backdrop-blur-sm gradient-text">
+    <h1 class="text-3xl font-bold text-center">Sign in</h1>
     <p class="mb-6 text-center">
-      New here? <a href="/register" class="text-blue-300 underline">Create an account</a>
+      New here? <a href="/register" class="text-white underline">Create an account</a>
     </p>
     <form action="/api/auth/signin" method="post" class="flex flex-col gap-4">
       <label for="email" class="font-semibold">Email</label>
-      <input type="email" name="email" id="email" class="p-2 rounded border border-gray-400" required />
+      <input type="email"name="email"id="email"class="p-2 rounded border border-gray-400 caret-white"required/>
       <label for="password" class="font-semibold">Password</label>
-      <input type="password" name="password" id="password" class="p-2 rounded border border-gray-400" required />
-      <button type="submit" class="mt-4 p-2 bg-blue-600 text-white rounded hover:bg-blue-700">Login</button>
+      <input type="password"name="password"id="password"class="p-2 rounded border border-gray-400 caret-(--color-muted-green)"required/>
+      <button type="submit"class="cursor-pointer mt-4 p-2 bg-[linear-gradient(135deg,_var(--color-sage)_0%,_var(--color-muted-green)_100%)] bg-[length:200%_200%] text-white rounded transition-all duration-500 hover:bg-[linear-gradient(135deg,_var(--color-sage)_0%,_var(--color-muted-green)_100%)] hover:bg-[position:100%_0]">Login</button>
     </form>
   </div>
 </Layout>
-
-  
